@@ -1,0 +1,125 @@
+<!DOCTYPE HTML>
+<!--
+	Landed by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Eui Won Kim | Snowman</title>
+		<meta name="author" content="Eui Won Kim">
+		<meta charset="utf-8" />
+		<link rel="shortcut icon" href="images/logoblack.png" type="image/x-icon">
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body>
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<header id="header">
+					<h1 style="margin-top:5px " id="logo"><a href="index.html"><img src="images/johnekimlogo1.png" alt=""> </a></h1>
+					<nav id="nav">
+						<ul>
+							<li><a href="index.html"><b>About</b></a></li>
+							<li>
+								<a href="#"><b>Projects</b></a>
+								<ul>
+									<li><a href="routie.html">Routie</a></li>
+									<li><a href="snowman.html">Study Buddy</a></li>
+									<li><a href="web.html">Personal Website</a></li>
+									<li><a href="elm.html">Elm</a></li>
+									<li><a href="cse.html">Lab Waitlist</a></li>
+									<li class="opener" style="-webkit-user-select: none; cursor: pointer; white-space: nowrap; opacity: 1;">
+										<a href="#" style="display: block;">Internet Security</a>
+										<ul style="-webkit-user-select: none; position: absolute; z-index: 1001; left: -167px; top: 103.703125px; opacity: 1; display: none;" class="dropotron level-1">
+											<li style="white-space: nowrap;"><a href="buffer.html" style="display: block;">Buffer&Integer Overflow</a></li>
+											<li style="white-space: nowrap;"><a href="heap.html" style="display: block;">Heap Spray</a></li>
+											<li style="white-space: nowrap;"><a href="china.html" style="display: block;">China's Great Cannon</a></li>
+											<li style="white-space: nowrap;"><a href="worm.html" style="display: block;">XSS & Profile Worm</a></li>
+										</ul>
+									</li>
+									
+								</ul>
+							</li>
+							<li><a href="resume.html"><b>Resume</b></a></li>
+							<li><a href="#footer"><b>Contact</b></a></li>
+
+							
+						</ul>
+					</nav>
+				</header>
+
+			<!-- Main -->
+				<div id="main" class="wrapper style1">
+					<div class="container">
+						<header class="major">
+							<h2><a><img src="images/security.jpg" height="154px" width="178px" alt="" /></a>
+</h2>
+							<p>Internet Security.</p>
+						</header>
+							<div class="row">
+								<div class="6u 12u(xsmall)">
+								<header style="float: left;">
+									<h2>Buffer Overflow</h2>
+									<p>Target</p>
+									<pre width="800px"><code >#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int foo(char *arg)
+{
+  char buf[127];
+  strcpy(buf, arg);
+}
+
+int main(int argc, char *argv[])
+{
+  if (argc != 2)
+    {
+      fprintf(stderr, "target1: argc != 2\n");
+      exit(EXIT_FAILURE);
+    }
+  foo(argv[1]);
+  return 0;
+}
+
+									</code></pre>
+						
+								</div>
+								
+								</header>
+						
+								
+						</div>
+
+					</div>
+				</div>
+
+			<!-- Footer -->
+				<footer id="footer">
+					<ul class="icons">
+						<li><a href="https://www.linkedin.com/in/euiwonkim" class="icon alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
+						<li><a href="https://github.com/jeo1kim" class="icon alt fa-github"><span class="label">GitHub</span></a></li>
+						<li><a href="mailto:jeo1kim@gmail.com" class="icon alt fa-envelope"><span class="label">Email</span></a></li>
+					</ul>
+					<ul class="copyright">
+						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</footer>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

